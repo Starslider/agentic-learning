@@ -17,12 +17,10 @@ This repository contains AI-powered agent development projects and learning mate
 
 A comprehensive AI-powered pharmacist assistant agent designed to provide factual medication information through a retail pharmacy chain interface. The agent uses a Mock API Protocol to simulate external tool integrations.
 
-#### Requirements Compliance Check
+#### Overview
 
-**Requirements Assessment:**
-
-**1. Write a clear system prompt (English)**
-- prompt.md - Complete system prompt in English with policies, tool definitions, examples, and channel adaptations
+**1. System Prompt (English)**
+- [prompt.md](./pharmacist-assistant/prompt.md) - Complete system prompt in English with policies, tool definitions, examples, and channel adaptations
 
 **2. Design the functions (tools) the agent should call**
 - Three tools designed: get_medication_by_name, check_stock_availability, get_prescription_requirements
@@ -30,12 +28,12 @@ A comprehensive AI-powered pharmacist assistant agent designed to provide factua
 - Enhanced with production-ready fields (manufacturer, storage, alternatives, insurance coverage)
 
 **3. Demonstrate how these functions will be used in Grok with 'Auto' settings using the Mock API Protocol**
-- mock-api-demonstration.md - Complete demonstration with TOOL CALL/TOOL RESPONSE format
+- [mock-api-demonstration.md](./pharmacist-assistant/mock-api-demonstration.md) - Complete demonstration with TOOL CALL/TOOL RESPONSE format
 - 5 detailed examples showing protocol usage
 - Multi-step flow demonstration with sequential tool calls
 
 **4. Design at least three distinct multi-step flows**
-- flows.md - Four distinct flows with Mermaid visualizations (added Flow 4: Multi-Medication Comparison)
+- [flows.md](./pharmacist-assistant/flows.md) - Four distinct flows with Mermaid visualizations (added Flow 4: Multi-Medication Comparison)
 - Each flow shows voice vs. chat handling differences
 - Clear sequences, tool usage, and response adaptations
 
@@ -49,25 +47,25 @@ A comprehensive AI-powered pharmacist assistant agent designed to provide factua
 - Redirect to healthcare professionals for advice requests
 - Handle both voice and chat channels with appropriate adaptations
 
-**Deliverables:**
-- System Prompt (English) - Complete
-- Function Design Document - Complete (in assignment document)
-- Flow Designs - Complete with voice/chat differences (4 flows)
-- Testing Plan - English-only tests (20 total, 5 per flow)
-- Evidence - Complete (4 screenshots captured and linked)
+**What's Included:**
+- ✅ System Prompt (English)
+- ✅ Three Function Designs with detailed schemas
+- ✅ Four Multi-Step Flows with voice/chat differences
+- ✅ Testing Plan with 20 test cases
+- ✅ Four Evidence Screenshots
 
-**Evaluation Criteria:**
-- Tool/API design clarity - Comprehensive schemas with examples
-- Prompt quality and integration of API usage - Mock API Protocol properly implemented
-- Multi-step interaction handling - Sequential tool calls demonstrated
-- Voice vs. chat adaptation - Explicit guidelines and examples
-- Policy adherence - Strict safety policies with redirections
-- Testing rigor - English-only test coverage
-- Quality and completeness of flow designs - Four flows with visualizations
+**Key Highlights:**
+- 📋 Comprehensive tool/API schemas with examples
+- 🔧 Mock API Protocol properly implemented
+- 🔄 Multi-step interaction handling with sequential tool calls
+- 💬 Voice vs. chat adaptation with explicit guidelines
+- 🛡️ Strict safety policies with redirections
+- ✅ English-only test coverage (20 tests)
+- 📊 Four complete flows with Mermaid visualizations
 
-#### Evidence Screenshots (Complete)
+#### Screenshots
 
-**Captured Screenshots:**
+**Demo Evidence:**
  - [Flow 1: Medication Information](./pharmacist-assistant/screenshots/flow1-medication-info.png) - TOOL CALL → TOOL RESPONSE → Complete medication details
  
 	<img src="./pharmacist-assistant/screenshots/flow1-medication-info.png" alt="Flow 1: Medication Information" width="480" />
@@ -86,7 +84,7 @@ A comprehensive AI-powered pharmacist assistant agent designed to provide factua
 - Flow 1 & 2 show successful tool integration with JSON responses
 - Flow 3 demonstrates policy enforcement (no medical advice, direct redirection)
 - Flow 4 demonstrates multi-step flows with multiple tool calls and comparative responses
-- Captured in Grok with 'Auto' settings using the mock-api-demonstration.md protocol
+- Captured in Grok with 'Auto' settings using the [mock-api-demonstration.md](./pharmacist-assistant/mock-api-demonstration.md) protocol
 
 #### Key Features:
 - Factual medication information retrieval
@@ -97,12 +95,12 @@ A comprehensive AI-powered pharmacist assistant agent designed to provide factua
 - Mock API Protocol demonstration
 
 #### Deliverables:
-- System prompt with comprehensive policies (prompt.md)
-- System prompt with mock API demonstration (prompt-with-mock-api.md)
+- System prompt with comprehensive policies ([prompt.md](./pharmacist-assistant/prompt.md))
+- System prompt with mock API demonstration ([prompt-with-mock-api.md](./pharmacist-assistant/prompt-with-mock-api.md))
 - Three tool designs with detailed schemas
-- Multi-step conversation flows with visualizations (flows.md)
-- Testing plan with 20 test cases and evidence documentation (testing.md)
-- Mock API Protocol demonstration (mock-api-demonstration.md)
+- Multi-step conversation flows with visualizations ([flows.md](./pharmacist-assistant/flows.md))
+- Testing plan with 20 test cases and evidence documentation ([testing.md](./pharmacist-assistant/testing.md))
+- Mock API Protocol demonstration ([mock-api-demonstration.md](./pharmacist-assistant/mock-api-demonstration.md))
 - Complete evidence screenshots
 
 ## Repository Structure
@@ -123,9 +121,9 @@ agentic-learning/
 ```
 
 **File Purposes & Differences:**
-- **prompt.md**: Clean, production-ready system prompt (~50 lines) - contains only behavioral instructions, tool definitions, and policies. Used for real API deployments.
-- **prompt-with-mock-api.md**: Complete testing prompt (~150 lines) - includes embedded mock database and examples. Agent simulates API calls internally without external responses.
-- **mock-api-demonstration.md**: Interactive testing guide (~200 lines) - shows step-by-step Mock API Protocol workflow with manual TOOL CALL/TOOL RESPONSE exchanges for evidence collection.
+- **[prompt.md](./pharmacist-assistant/prompt.md)**: Clean, production-ready system prompt (~50 lines) - contains only behavioral instructions, tool definitions, and policies. Used for real API deployments.
+- **[prompt-with-mock-api.md](./pharmacist-assistant/prompt-with-mock-api.md)**: Complete testing prompt (~150 lines) - includes embedded mock database and examples. Agent simulates API calls internally without external responses.
+- **[mock-api-demonstration.md](./pharmacist-assistant/mock-api-demonstration.md)**: Interactive testing guide (~200 lines) - shows step-by-step Mock API Protocol workflow with manual TOOL CALL/TOOL RESPONSE exchanges for evidence collection.
 
 ## Technologies Used
 - AI Agent Development
