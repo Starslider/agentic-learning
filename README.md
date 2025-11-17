@@ -5,6 +5,7 @@ This repository contains AI-powered agent development projects and learning mate
 ## Quick Start
 - Open the pharmacist assistant prompt: [pharmacist-assistant/prompt.md](./pharmacist-assistant/prompt.md)
 - Optional demo prompt with embedded mock data: [pharmacist-assistant/prompt-with-mock-api.md](./pharmacist-assistant/prompt-with-mock-api.md)
+- **Bonus prompt with TOON format**: [pharmacist-assistant/prompt-with-toon-api.md](./pharmacist-assistant/prompt-with-toon-api.md)
 - Run in Grok with 'Auto' settings:
 	1. Start a new conversation
 	2. Paste the prompt
@@ -49,6 +50,8 @@ A comprehensive AI-powered pharmacist assistant agent designed to provide factua
 
 **What's Included:**
 - ✅ System Prompt (English) - [prompt.md](./pharmacist-assistant/prompt.md)
+- ✅ System Prompt with Mock API (JSON) - [prompt-with-mock-api.md](./pharmacist-assistant/prompt-with-mock-api.md)
+- ✅ **Bonus: System Prompt with Mock API (TOON)** - [prompt-with-toon-api.md](./pharmacist-assistant/prompt-with-toon-api.md)
 - ✅ Three Function Designs with detailed schemas - [view in prompt.md](./pharmacist-assistant/prompt.md#available-tools)
 - ✅ Four Multi-Step Flows with voice/chat differences - [flows.md](./pharmacist-assistant/flows.md)
 - ✅ Testing Plan with 20 test cases - [testing.md](./pharmacist-assistant/testing.md)
@@ -108,7 +111,8 @@ A comprehensive AI-powered pharmacist assistant agent designed to provide factua
 agentic-learning/
 ├── pharmacist-assistant/
 │   ├── prompt.md                         # Clean system prompt (production-ready, no mock data)
-│   ├── prompt-with-mock-api.md          # Complete prompt with embedded mock database & examples
+│   ├── prompt-with-mock-api.md          # Complete prompt with embedded mock database & examples (JSON format)
+│   ├── prompt-with-toon-api.md          # BONUS: Complete prompt with embedded mock database & examples (TOON format)
 │   ├── flows.md                         # Multi-step conversation flows (4 flows with Mermaid diagrams)
 │   ├── testing.md                       # Testing plan with 20 test cases & evidence documentation
 │   ├── mock-api-demonstration.md        # Interactive protocol guide (TOOL CALL → TOOL RESPONSE workflow)
@@ -122,7 +126,8 @@ agentic-learning/
 
 **File Purposes & Differences:**
 - **[prompt.md](./pharmacist-assistant/prompt.md)**: Clean, production-ready system prompt (~50 lines) - contains only behavioral instructions, tool definitions, and policies. Used for real API deployments.
-- **[prompt-with-mock-api.md](./pharmacist-assistant/prompt-with-mock-api.md)**: Complete testing prompt (~150 lines) - includes embedded mock database and examples. Agent simulates API calls internally without external responses.
+- **[prompt-with-mock-api.md](./pharmacist-assistant/prompt-with-mock-api.md)**: Complete testing prompt (~150 lines) - includes embedded mock database and examples. Agent simulates API calls internally without external responses. Uses JSON format for mock data.
+- **[prompt-with-toon-api.md](./pharmacist-assistant/prompt-with-toon-api.md)**: **BONUS** Complete testing prompt (~150 lines) - includes embedded mock database and examples. Agent simulates API calls internally without external responses. Uses TOON (Token Oriented Object Notation) format for mock data.
 - **[mock-api-demonstration.md](./pharmacist-assistant/mock-api-demonstration.md)**: Interactive testing guide (~200 lines) - shows step-by-step Mock API Protocol workflow with manual TOOL CALL/TOOL RESPONSE exchanges for evidence collection.
 
 ## Technologies Used
@@ -131,6 +136,54 @@ agentic-learning/
 - Markdown Documentation
 - Grok with 'Auto' settings Integration
 - JSON Schema Design
+- **TOON (Token Oriented Object Notation) Schema Design**
+
+## Why TOON? Created Especially for LLMs
+
+**TOON (Token Oriented Object Notation)** is a custom data format designed specifically for Large Language Models with several key advantages:
+
+### 🚀 **Token Efficiency**
+- **50-70% fewer tokens** than equivalent JSON structures
+- Compact syntax reduces API costs and context window usage
+- More data fits within LLM token limits
+
+### 🧠 **LLM-Friendly Parsing**
+- **Table-like structure** is more natural for LLMs to understand and generate
+- **Simple string operations** for parsing (split by commas, pipes)
+- **No nested brackets** or complex escaping rules
+
+### 📊 **Better for Tabular Data**
+- **Native support** for array-like data structures
+- **Comma-separated values** are intuitive for LLMs
+- **Pipe separators** for sub-arrays within fields
+
+### 💰 **Cost-Effective**
+- **Reduced token consumption** = lower API costs
+- **Faster processing** due to simpler syntax
+- **Scalable** for large datasets within context limits
+
+### 🔧 **Easy Implementation**
+- **No external libraries** required
+- **Simple regex/string operations** for parsing
+- **Human-readable** format for debugging
+
+**Example Comparison:**
+```json
+// JSON (verbose)
+[
+  {"id": 1, "name": "Alice", "role": "admin"},
+  {"id": 2, "name": "Bob", "role": "user"}
+]
+```
+
+```toon
+// TOON (compact)
+users[2]{id,name,role}:
+  1,Alice,admin
+  2,Bob,user
+```
+
+The TOON format demonstrates how custom data formats can be optimized specifically for LLM workflows, potentially revolutionizing how AI agents handle structured data exchange.
 
 ## Learning Objectives
 - AI agent prompt engineering
