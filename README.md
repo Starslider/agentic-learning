@@ -2,6 +2,14 @@
 
 This repository contains AI-powered agent development projects and learning materials.
 
+## Quick Start
+- Open the pharmacist assistant prompt: [pharmacist-assistant/prompt.md](./pharmacist-assistant/prompt.md)
+- Optional demo prompt with embedded mock data: [pharmacist-assistant/prompt-with-mock-api.md](./pharmacist-assistant/prompt-with-mock-api.md)
+- Run in Grok with 'Auto' settings:
+	1. Start a new conversation
+	2. Paste the prompt
+	3. Ask a query, e.g. "Tell me about Ibuprofen 400mg" or "Compare Ibuprofen and Acetaminophen"
+
 ## Projects
 
 ### Pharmacist Assistant Agent
