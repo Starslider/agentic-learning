@@ -60,10 +60,18 @@ A comprehensive AI-powered pharmacist assistant agent designed to provide factua
 #### Evidence Screenshots (Complete)
 
 **Captured Screenshots:**
-- [Flow 1: Medication Information](./pharmacist-assistant/screenshots/flow1-medication-info.png) - TOOL CALL → TOOL RESPONSE → Complete medication details
-- [Flow 2: Stock Error Handling](./pharmacist-assistant/screenshots/flow2-stock-error-handling.png) - TOOL CALL → Error response → Fallback message
-- [Flow 3: Advice Redirection](./pharmacist-assistant/screenshots/flow3-advice-redirect.png) - Direct policy response (no tools) → Professional redirection
-- [Flow 4: Multi-Medication Comparison](./pharmacist-assistant/screenshots/flow4-medication-comparison.png) - Multiple TOOL CALLS → Comparative response → Policy redirection
+ - [Flow 1: Medication Information](./pharmacist-assistant/screenshots/flow1-medication-info.png) - TOOL CALL → TOOL RESPONSE → Complete medication details
+ 
+	 ![Flow 1: Medication Information](./pharmacist-assistant/screenshots/flow1-medication-info.png)
+ - [Flow 2: Stock Error Handling](./pharmacist-assistant/screenshots/flow2-stock-error-handling.png) - TOOL CALL → Error response → Fallback message
+ 
+	 ![Flow 2: Stock Error Handling](./pharmacist-assistant/screenshots/flow2-stock-error-handling.png)
+ - [Flow 3: Advice Redirection](./pharmacist-assistant/screenshots/flow3-advice-redirect.png) - Direct policy response (no tools) → Professional redirection
+ 
+	 ![Flow 3: Advice Redirection](./pharmacist-assistant/screenshots/flow3-advice-redirect.png)
+ - [Flow 4: Multi-Medication Comparison](./pharmacist-assistant/screenshots/flow4-medication-comparison.png) - Multiple TOOL CALLS → Comparative response → Policy redirection
+ 
+	 ![Flow 4: Multi-Medication Comparison](./pharmacist-assistant/screenshots/flow4-medication-comparison.png)
 
 **Screenshot Details:**
 - All screenshots demonstrate the Mock API Protocol: TOOL CALL → TOOL RESPONSE → Final Answer
