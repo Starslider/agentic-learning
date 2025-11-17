@@ -48,20 +48,20 @@ A comprehensive AI-powered pharmacist assistant agent designed to provide factua
 - Handle both voice and chat channels with appropriate adaptations
 
 **What's Included:**
-- ✅ System Prompt (English)
-- ✅ Three Function Designs with detailed schemas
-- ✅ Four Multi-Step Flows with voice/chat differences
-- ✅ Testing Plan with 20 test cases
-- ✅ Four Evidence Screenshots
+- ✅ System Prompt (English) - [prompt.md](./pharmacist-assistant/prompt.md)
+- ✅ Three Function Designs with detailed schemas - [view in prompt.md](./pharmacist-assistant/prompt.md#available-tools)
+- ✅ Four Multi-Step Flows with voice/chat differences - [flows.md](./pharmacist-assistant/flows.md)
+- ✅ Testing Plan with 20 test cases - [testing.md](./pharmacist-assistant/testing.md)
+- ✅ Four Evidence Screenshots - [view below](#screenshots)
 
 **Key Highlights:**
-- 📋 Comprehensive tool/API schemas with examples
-- 🔧 Mock API Protocol properly implemented
-- 🔄 Multi-step interaction handling with sequential tool calls
-- 💬 Voice vs. chat adaptation with explicit guidelines
-- 🛡️ Strict safety policies with redirections
-- ✅ English-only test coverage (20 tests)
-- 📊 Four complete flows with Mermaid visualizations
+- 📋 Comprehensive tool/API schemas with examples - [prompt.md](./pharmacist-assistant/prompt.md#available-tools)
+- 🔧 Mock API Protocol properly implemented - [mock-api-demonstration.md](./pharmacist-assistant/mock-api-demonstration.md)
+- 🔄 Multi-step interaction handling with sequential tool calls - [flows.md](./pharmacist-assistant/flows.md)
+- 💬 Voice vs. chat adaptation with explicit guidelines - [prompt.md](./pharmacist-assistant/prompt.md)
+- 🛡️ Strict safety policies with redirections - [prompt.md](./pharmacist-assistant/prompt.md)
+- ✅ English-only test coverage (20 tests) - [testing.md](./pharmacist-assistant/testing.md)
+- 📊 Four complete flows with Mermaid visualizations - [flows.md](./pharmacist-assistant/flows.md)
 
 #### Screenshots
 
