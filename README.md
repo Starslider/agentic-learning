@@ -6,6 +6,7 @@ This repository contains AI-powered agent development projects and learning mate
 - Open the pharmacist assistant prompt: [pharmacist-assistant/prompt.md](./pharmacist-assistant/prompt.md)
 - Optional demo prompt with embedded mock data: [pharmacist-assistant/prompt-with-mock-api.md](./pharmacist-assistant/prompt-with-mock-api.md)
 - **Bonus prompt with TOON format**: [pharmacist-assistant/prompt-with-toon-api.md](./pharmacist-assistant/prompt-with-toon-api.md)
+- Insurance cost assistant: [insurance-cost-assistant/prompt.md](./insurance-cost-assistant/prompt.md)
 - Run in Grok with 'Auto' settings:
 	1. Start a new conversation
 	2. Paste the prompt
@@ -106,6 +107,34 @@ A comprehensive AI-powered pharmacist assistant agent designed to provide factua
 - Mock API Protocol demonstration ([mock-api-demonstration.md](./pharmacist-assistant/mock-api-demonstration.md))
 - Complete evidence screenshots
 
+### Insurance Cost Assistant Agent
+**Location:** `insurance-cost-assistant/`
+
+An AI-powered insurance cost assistant designed to provide factual information about insurance costs, coverage options, and policy details through a major insurance company interface.
+
+#### Overview
+
+**System Prompt**
+- [prompt.md](./insurance-cost-assistant/prompt.md) - Complete system prompt with policies, tool definitions, and examples
+
+**Agent Requirements:**
+- Provide factual information about insurance costs and coverage
+- Explain coverage options and typical exclusions
+- Calculate estimated premiums based on provided factors
+- No financial advice, no policy recommendations, no purchase encouragement
+- Redirect to insurance professionals for advice requests
+
+**What's Included:**
+- ✅ System Prompt - [prompt.md](./insurance-cost-assistant/prompt.md)
+- ✅ Four Tool Designs (get_insurance_quotes, compare_policies, get_coverage_details, calculate_premium)
+
+**Key Features:**
+- Insurance quote estimates
+- Coverage comparisons
+- Policy details explanation
+- Premium calculations
+- Strict safety policies (no financial advice)
+
 ## Repository Structure
 ```
 agentic-learning/
@@ -121,6 +150,9 @@ agentic-learning/
 │       ├── flow2-stock-error-handling.png # Evidence: Error handling flow
 │       ├── flow3-advice-redirect.png    # Evidence: Policy redirection flow
 │       └── flow4-medication-comparison.png # Evidence: Multi-medication comparison flow
+├── insurance-cost-assistant/
+│   ├── prompt.md                         # System prompt for insurance cost assistant
+│   └── README.md                         # Project documentation
 └── README.md
 ```
 
