@@ -14,6 +14,7 @@ This agent integrates with the primai-okp-api.fly.dev API to provide factual inf
 - **Household Quotes** - Get quotes for multiple family members
 - **Regional Variations** - Premium information based on Swiss postal codes and cantons
 - **Town Name Support** - Automatically converts Swiss town/city names to postal codes using OpenPLZ API
+- **Voice Mode Ready** - Optimized for both text and voice interactions with conversational responses
 
 ## Agent Requirements
 
@@ -77,6 +78,21 @@ The agent has been thoroughly tested with 27 comprehensive test cases covering:
 
 The agent is designed to work with Grok and integrates with the official Swiss health insurance premium API. It provides accurate information about Grundversicherung costs and options.
 
+### Interaction Modes
+
+**Text Mode:**
+- Provides detailed lists and structured information
+- Shows comprehensive premium comparisons in formatted tables
+- Ideal for reviewing multiple options simultaneously
+
+**Voice Mode:**
+- Conversational, one-question-at-a-time approach
+- Presents top 3-5 options initially, offers to continue
+- Uses natural spoken language (e.g., "around 385 francs" instead of "CHF 385.00")
+- Confirms heard information back to user for accuracy
+- Breaks complex information into digestible chunks
+- Spells out postal codes clearly (e.g., "eight zero zero zero")
+
 ### Quick Reference
 
 **Required User Information:**
@@ -92,6 +108,7 @@ The agent is designed to work with Grok and integrates with the official Swiss h
 - ✅ Household quotes for families
 - ✅ Town name to PLZ conversion
 - ✅ Canton verification
+- ✅ Voice and text mode interactions
 - ❌ Financial advice or recommendations
 - ❌ Purchase facilitation
 - ❌ Non-Swiss insurance information
