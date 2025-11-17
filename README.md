@@ -142,6 +142,8 @@ agentic-learning/
 
 **TOON (Token Oriented Object Notation)** is a custom data format designed specifically for Large Language Models with several key advantages:
 
+🔗 **Reference:** [TOON Format Specification](https://github.com/toon-format/toon)
+
 ### 🚀 **Token Efficiency**
 - **50-70% fewer tokens** than equivalent JSON structures
 - Compact syntax reduces API costs and context window usage
