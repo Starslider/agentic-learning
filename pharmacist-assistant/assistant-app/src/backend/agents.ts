@@ -358,13 +358,12 @@ export async function chatWithMedicationAgent(
         ragContext,
         `\nMedication data (queried from openFDA API - filtered for user-friendly information):`,
         queriedMedications.length > 0
-          ? `The system has queried the openFDA API and retrieved essential information for: ${potentialMedNames.join(', ')}.`
-          : `No medications were automatically identified in the user's message. If the user is asking about a medication,`,
-        `you should inform them that the system can look up ANY medication via the openFDA API.`,
-        ragContext ? `\nNote: The system also found semantically similar medications above that might be relevant.` : '',
-        `\nIMPORTANT: Only provide the essential information shown below. Keep your response SHORT (2-4 sentences max).`,
-        `\nFiltered medication data (JSON):\n${JSON.stringify(datasetSnapshot, null, 2)}`
-      ].join('')
+          ? `The system has queried the openFDA API and retrieved essential information for: ${potentialMedNames.join(', ')}.\n`
+          : `No medications were automatically identified in the user's message. If the user is asking about a medication, you should inform them that the system can look up ANY medication via the openFDA API.\n`,
+        ragContext ? `Note: The system also found semantically similar medications above that might be relevant.\n` : '',
+        `IMPORTANT: Only provide the essential information shown below. Keep your response SHORT (2-4 sentences max).\n`,
+        `Filtered medication data (JSON):\n${JSON.stringify(datasetSnapshot, null, 2)}`
+      ].filter(Boolean).join('')
     }
   ];
 
