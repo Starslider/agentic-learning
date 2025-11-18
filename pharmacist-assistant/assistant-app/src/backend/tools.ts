@@ -1,4 +1,7 @@
-// Mock database and tool implementations for Pharmacist Assistant
+// Medication database and tool implementations for Pharmacist Assistant
+// Now with API integration for real medication data
+
+import { getMedicationWithFallback, MedicationApiResult, OpenFDAApiCall } from './medicationApi';
 
 export interface Medication {
   name: string;
@@ -140,30 +143,101 @@ const mockStock: { [key: string]: StockInfo } = {
   }
 };
 
-export function getMedicationByName(name: string, strength_mg?: number): Medication | { error: string } {
-  const med = mockMedications[name];
-  if (!med) return { error: "Medication not found" };
-  if (strength_mg && med.strength_mg !== strength_mg) return { error: "Medication not found with that strength" };
-  return med;
+/**
+ * Get medication by name - ALWAYS uses API first for any medication
+ * This queries the openFDA API for real medication data
+ * Returns both the medication and API call metadata
+ */
+export async function getMedicationByName(
+  name: string, 
+  strength_mg?: number
+): Promise<{ medication: Medication | { error: string }; apiCall: OpenFDAApiCall | null }> {
+  console.log(`[Tools] Querying API for medication: ${name}`);
+  
+  // Always try API first - no hardcoded list dependency
+  const { result: apiResult, apiCall } = await getMedicationWithFallback(name);
+  
+  if (apiResult.error) {
+    // API failed - return error (no fallback to hardcoded list)
+    console.log(`[Tools] API query failed for ${name}: ${apiResult.error}`);
+    return { 
+      medication: { error: apiResult.error || "Medication not found in database. Please verify the medication name and try again." },
+      apiCall
+    };
+  }
+  
+  // Convert API result to Medication format
+  const medication: Medication = {
+    name: apiResult.name,
+    active_ingredient: apiResult.active_ingredient || name,
+    strength_mg: apiResult.strength_mg || 0,
+    dosage_form: apiResult.dosage_form || 'tablet',
+    dosage_instructions: apiResult.dosage_instructions || 'See package insert for dosage information',
+    common_side_effects: apiResult.common_side_effects || [],
+    contraindications: apiResult.contraindications || [],
+    requires_prescription: apiResult.requires_prescription ?? false,
+    in_stock: true, // Stock info is separate (would need separate API/service)
+    manufacturer: apiResult.manufacturer || 'Unknown',
+    storage_instructions: apiResult.storage_instructions || 'Store at room temperature',
+    alternatives: [] // Would need additional API call to get alternatives
+  };
+  
+  if (strength_mg && medication.strength_mg !== 0 && medication.strength_mg !== strength_mg) {
+    return { 
+      medication: { error: `Medication found but strength mismatch. Found: ${medication.strength_mg}mg, requested: ${strength_mg}mg` },
+      apiCall
+    };
+  }
+  
+  console.log(`[Tools] Successfully retrieved medication data for ${name} from API`);
+  return { medication, apiCall };
 }
 
 export function checkStockAvailability(name: string): StockInfo | { error: string } {
-  const stock = mockStock[name];
-  if (!stock) return { error: "Stock information not available" };
-  return stock;
-}
-
-export function getPrescriptionRequirements(name: string): PrescriptionInfo | { error: string } {
-  const presc = mockPrescriptions[name];
-  if (!presc) return { error: "Prescription information not found" };
-  return presc;
-}
-
-export function getMedicationDataset() {
-  return Object.keys(mockMedications).map((name) => ({
+  // Stock information would need a separate API/service
+  // For now, return a generic response indicating stock check is not available via API
+  return { 
     name,
-    medication: mockMedications[name],
-    prescription: mockPrescriptions[name] ?? null,
-    stock: mockStock[name] ?? null
-  }));
+    in_stock: true, // Default to in stock, but indicate this is not from real inventory
+    error: "Real-time stock information is not available. Please contact the pharmacy directly for current availability."
+  };
+}
+
+export async function getPrescriptionRequirements(name: string): Promise<PrescriptionInfo | { error: string }> {
+  // Try to get prescription info from API first
+  const { result: apiResult } = await getMedicationWithFallback(name);
+  
+  if (apiResult.error) {
+    return { error: "Prescription information not available for this medication." };
+  }
+  
+  // Extract prescription requirements from API data
+  return {
+    name: apiResult.name,
+    requires_prescription: apiResult.requires_prescription ?? false,
+    prescription_type: apiResult.requires_prescription ? 'prescription' : 'over-the-counter',
+    refills_allowed: false, // Would need additional API data
+    max_refills: undefined,
+    age_restrictions: "See package insert or consult pharmacist",
+    general_notes: apiResult.contraindications?.length ? `Contraindications: ${apiResult.contraindications.join(', ')}` : "See package insert for complete information",
+    insurance_coverage: "Varies by insurance plan",
+    generic_available: true // Would need additional API data
+  };
+}
+
+// Cache for medication dataset to avoid repeated API calls
+let datasetCache: { data: any[]; timestamp: number } | null = null;
+const DATASET_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
+/**
+ * Get medication dataset - now returns empty/minimal dataset
+ * Since we query the API on-demand for any medication, we don't need to pre-populate
+ * This is kept for backward compatibility but the agent should query medications individually
+ */
+export async function getMedicationDataset() {
+  console.log('[Tools] Medication dataset requested - using API-first approach (query medications individually)');
+  
+  // Return empty dataset - medications are queried on-demand via API
+  // This tells the agent that it should use getMedicationByName for any medication query
+  return [];
 }

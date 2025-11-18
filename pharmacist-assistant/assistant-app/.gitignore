@@ -27,3 +27,14 @@ Thumbs.db
 # Parcel cache
 .cache/
 .parcel-cache/
+
+# Database
+data/
+*.db
+*.db-shm
+*.db-wal
+rag_embeddings.db
+
+# Logs
+logs/
+*.log
